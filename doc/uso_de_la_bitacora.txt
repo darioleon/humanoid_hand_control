@@ -1,0 +1,2 @@
+Para documentar los cambios en el proyector es posible el utilizar el comando:
+	$ logclarissa [LO QUE SE QUIERE AGREGAR AL LOG]

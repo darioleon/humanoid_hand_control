@@ -1,0 +1,19 @@
+Pasos para utilizar la mano con FFH:
+
+1. Configurar la red con el siguiente comando para utilizar la IP reconocida por el controlador de la mano:
+   $ sudo ifconfig eth0:0 192.168.200.10 netmask 255.255.255.0
+2. Comprobar la comunicación con la compu de la mano con el siguiente comando
+   $ ping 192.168.200.1
+3. dirigirse al siguiente directorio:
+   $ cd ~/local/src/hand-server/FFH
+4. Ejecutar la aplicación de control de la mano (la computadora que controla mano debe estar encendida):
+   $ ./FFH
+5. Encender switch de la mano.
+6. Presionar el botón 'Start Communication', esperar 5 segundos, presionar el botón 'Start FFHand System', esperar 5 segundos, presionar el botón 'Start FFHand Operation'
+7. Habilitar los dedos presionando 'Thumb En 1', 'Index En 1', 'Middle En 1', 'Ring En 1'. El meñique (pinky) no está funcionando.
+8. Para utilizar el control por gestos, presionar 'Gesture Control Mode' y presionar cualquiera de los botones dentro del recuadro 'Gesture'
+9. Para utilizar el control manual, presionar 'Manual Control Mode', 'port 1' y mover los deslizadores de los joins que se desean mover. Tener cuidado de no moverlos brúscamente ni dejar que los dedos choquen fuértemente entre sí.
+10. En caso de emergencia presionar 'EMERGENCY STOP', si se quiere seguir usando después de esto, presionar 'Resume'
+11. Para dejar de usar la mano, presionar 'Gesture Control Mode', presionar 'Original Gesture'.
+12. Apagar switch de la mano.
+13. Cerrar aplicación FFH.
