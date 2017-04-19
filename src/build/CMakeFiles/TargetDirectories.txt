@@ -1,0 +1,1 @@
+/home/darioubuntu/catkin_ws/src/hand_code/scripts/build/CMakeFiles/hand_yarp.dir

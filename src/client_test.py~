@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+
+from hand_client import HandClient
+from time import sleep 
+
+print "Creating hand client"
+hand = HandClient()
+print "Enabling Thumb and Index fingers"
+hand.enable(1)
+hand.enable(2)
+hand.update(2)
+print "Check if fingers are enabled (can fail)"
+print hand.enabled(hand.fingers["Thumb"])
+sleep(2)
+print hand.enabled(hand.fingers["Index"])
+sleep(2)
+print "Moving fingers individually"
+hand.set_pos(hand.fingers["Thumb"], hand.arts["Outer"],60)
+hand.update(2)
+hand.set_pos(hand.fingers["Index"], hand.arts["Outer"],60)
+hand.update(2)
+hand.set_pos(hand.fingers["Index"], hand.arts["Outer"],0)
+hand.update(2)
+hand.set_pos(hand.fingers["Thumb"], hand.arts["Outer"],0)
+hand.update(2)
+print "Movin fingers at the same time"
+hand.set_pos(hand.fingers["Thumb"], hand.arts["Outer"],60)
+hand.set_pos(hand.fingers["Index"], hand.arts["Outer"],60)
+hand.update(2)
+hand.set_pos(hand.fingers["Index"], hand.arts["Outer"],0)
+hand.set_pos(hand.fingers["Thumb"], hand.arts["Outer"],0)
+hand.update(2)
+print "Disabling Thumb and Index fingers"
+hand.disable(hand.fingers["Index"])
+hand.disable(hand.fingers["Ring"])
+hand.update(2)
+

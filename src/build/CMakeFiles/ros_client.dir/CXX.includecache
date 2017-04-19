@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/darioubuntu/catkin_ws/src/hand_code/scripts/ros_client.cpp
+SharedData.h
+/home/darioubuntu/catkin_ws/src/hand_code/scripts/SharedData.h
+iostream
+-
+yarp/os/Network.h
+-
+yarp/os/Node.h
+-
+yarp/os/Publisher.h
+-
+yarp/os/Time.h
+-
+

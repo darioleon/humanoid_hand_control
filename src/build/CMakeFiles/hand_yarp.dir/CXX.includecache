@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/darioubuntu/catkin_ws/src/hand_code/scripts/hand_yarp.cpp
+iostream
+-
+ardcom/ardcom.h
+-
+ardcom/ardcomoutshm.h
+-
+ardcom/ardcominshm.h
+-
+yarp/os/Bottle.h
+-
+yarp/os/Property.h
+-
+yarp/os/BufferedPort.h
+-
+yarp/os/Network.h
+-
+yarp/os/Time.h
+-
+stdio.h
+-
+
