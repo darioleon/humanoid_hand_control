@@ -1,0 +1,4 @@
+string var0
+int64 var1
+int64 var2
+float64 var3

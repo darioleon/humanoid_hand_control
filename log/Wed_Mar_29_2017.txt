@@ -1,0 +1,2 @@
+15:04:05 : cambié la ubicación de los alias que estaban en .bashrc, ahora los puse en .bash_aliases. Además, ahora ros-init incluye el . /home/robot/catkin_ws/devel/setup.bash
+15:31:11 : borré fast_ros_init porque no servía al ejecutarlo en los scripts ni en la terminal. Lo que hay que hacer es copiar todo lo que contiene ros-init en el código siempre que se quiera usar ros

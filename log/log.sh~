@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "$( date | cut -f 4 --delimiter=' ' ) : $*" >> "$( date | cut -f 1,2,3,6 --delimiter=' ' | tr ' ' '_' ).txt"
+
+exit 0

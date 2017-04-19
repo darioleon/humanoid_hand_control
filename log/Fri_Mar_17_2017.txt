@@ -1,0 +1,5 @@
+12:29:41 : Se tuvo éxito en la comunicación con la mano por medio de services de ros. Lo que faltaba agregar para que esto funcionara era hand.update(time) al final de la función handle_server del código server_sm.py
+13:55:06 : Se creó el script iniciador de roscore en ./bin
+14:06:14 : Se renombró el directorio de Scripts a src
+15:01:12 : Se agregó el script de kill_screens.sh
+15:02:03 : Se agregó el script de run_server.sh que funciona dentro de run_client_test_ros.sh
