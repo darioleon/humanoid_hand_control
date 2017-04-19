@@ -1,0 +1,351 @@
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out active at tcp://192.168.200.10:10002
+Failure: could not find destination port /hand/in
+yarp: Port /handclient/in active at tcp://192.168.200.10:10003
+Failure: could not find source port /hand/out
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out active at tcp://192.168.200.10:10004
+yarp: Sending output from /handclient/out to /hand/in using tcp
+Success: Added connection from /handclient/out to tcp://hand/in
+yarp: Port /handclient/in active at tcp://192.168.200.10:10005
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+Success: Added connection from /hand/out to tcp://handclient/in
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+yarp: Removing output from /handclient/out to /hand/in
+yarp: Sending output from /handclient/out to /hand/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: Removing output from /handclient/out to /hand/in
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out failed to activate at tcp://192.168.200.10:10002 (address conflict)
+Failure: could not find destination port /hand/in
+yarp: Port /handclient/in failed to activate at tcp://192.168.200.10:10003 (address conflict)
+Failure: could not find source port /hand/out
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+[ERROR] [1490815842.143993]: Error processing request: 'NoneType' object has no attribute 'get'
+['Traceback (most recent call last):\n', '  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py", line 623, in _handle_request\n    response = convert_return_to_response(self.handler(request), self.response_class)\n', '  File "../src/server_sm.py", line 215, in handle_server\n    hand.update(time)\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 263, in update\n    self.update_input()\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 231, in update_input\n    self.hand_in[item][i] = bottle_in.get(j).asDouble()\n', "AttributeError: 'NoneType' object has no attribute 'get'\n"]
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out failed to activate at tcp://192.168.200.10:10002 (address conflict)
+Failure: could not find destination port /hand/in
+yarp: Port /handclient/in failed to activate at tcp://192.168.200.10:10003 (address conflict)
+Failure: could not find source port /hand/out
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+[ERROR] [1490815963.523595]: Error processing request: 'NoneType' object has no attribute 'get'
+['Traceback (most recent call last):\n', '  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py", line 623, in _handle_request\n    response = convert_return_to_response(self.handler(request), self.response_class)\n', '  File "../src/server_sm.py", line 215, in handle_server\n    hand.update(time)\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 263, in update\n    self.update_input()\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 231, in update_input\n    self.hand_in[item][i] = bottle_in.get(j).asDouble()\n', "AttributeError: 'NoneType' object has no attribute 'get'\n"]
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out failed to activate at tcp://192.168.200.10:10002 (address conflict)
+Failure: could not find destination port /hand/in
+yarp: Port /handclient/in failed to activate at tcp://192.168.200.10:10003 (address conflict)
+Failure: could not find source port /hand/out
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+[ERROR] [1490816066.196405]: Error processing request: 'NoneType' object has no attribute 'get'
+['Traceback (most recent call last):\n', '  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py", line 623, in _handle_request\n    response = convert_return_to_response(self.handler(request), self.response_class)\n', '  File "../src/server_sm.py", line 215, in handle_server\n    hand.update(time)\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 263, in update\n    self.update_input()\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 231, in update_input\n    self.hand_in[item][i] = bottle_in.get(j).asDouble()\n', "AttributeError: 'NoneType' object has no attribute 'get'\n"]
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out failed to activate at tcp://192.168.200.10:10002 (address conflict)
+yarp: Receiving input from /hand/in to /handclient/out using tcp
+Success: Added connection from /hand/in to tcp://hand/in
+yarp: Port /handclient/in failed to activate at tcp://192.168.200.10:10003 (address conflict)
+yarp: Sending output from /handclient/in to /handclient/in using tcp
+Success: Added connection from /handclient/in to tcp://handclient/in
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+[ERROR] [1490816149.846902]: Error processing request: 'NoneType' object has no attribute 'get'
+['Traceback (most recent call last):\n', '  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py", line 623, in _handle_request\n    response = convert_return_to_response(self.handler(request), self.response_class)\n', '  File "../src/server_sm.py", line 215, in handle_server\n    hand.update(time)\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 263, in update\n    self.update_input()\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 231, in update_input\n    self.hand_in[item][i] = bottle_in.get(j).asDouble()\n', "AttributeError: 'NoneType' object has no attribute 'get'\n"]
+Ejecutando run_server.sh
+/home/robot/catkin_ws/src/hand_code/bin
+yarp: Port /handclient/out failed to activate at tcp://192.168.200.10:10004 (address conflict)
+yarp: Sending output from /handclient/out to /hand/in using tcp
+Success: Added connection from /handclient/out to tcp://hand/in
+yarp: Port /handclient/in failed to activate at tcp://192.168.200.10:10005 (address conflict)
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+Success: Added connection from /hand/out to tcp://handclient/in
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+[ERROR] [1490816191.134257]: Error processing request: 'NoneType' object has no attribute 'get'
+['Traceback (most recent call last):\n', '  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py", line 623, in _handle_request\n    response = convert_return_to_response(self.handler(request), self.response_class)\n', '  File "../src/server_sm.py", line 215, in handle_server\n    hand.update(time)\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 263, in update\n    self.update_input()\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 231, in update_input\n    self.hand_in[item][i] = bottle_in.get(j).asDouble()\n', "AttributeError: 'NoneType' object has no attribute 'get'\n"]
+yarp: Removing output from /handclient/out to /hand/in
+yarp: Sending output from /handclient/out to /hand/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: Removing output from /handclient/out to /hand/in
+yarp: Removing input from /hand/in to /handclient/out
+yarp: Sending output from /handclient/out to /hand/in using tcp
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: Removing output from /handclient/out to /hand/in
+yarp: Sending output from /handclient/out to /hand/in using tcp
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: Removing output from /handclient/out to /hand/in
+yarp: Sending output from /handclient/out to /hand/in using tcp
+yarp: Receiving input from /hand/out to /handclient/in using tcp
+yarp: Removing input from /hand/out to /handclient/in
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+yarp: Removing output from /handclient/in to /handclient/in
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+yarp: Removing output from /handclient/out to /hand/in
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: enable
+finger: 1
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: enabled
+finger: 0
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: enabled
+finger: 1
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: setpos
+finger: 0
+joint: 0
+position: 0.0
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: setpos
+finger: 1
+joint: 0
+position: 0.0
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+------------------------
+operation: setpos
+finger: 0
+joint: 0
+position: 60.0
+OUTPUT
+INPUT
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out
+Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out
+Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+Ejecutando run_server.sh
+Traceback (most recent call last):
+  File "../src/server_sm.py", line 7, in <module>
+    from hand_code.msg import Handmsg #lo mismo de arriba
+ImportError: No module named hand_code.msg

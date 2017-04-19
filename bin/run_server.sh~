@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo 'Ejecutando run_server.sh'
+
+source ./fast_ros_init.sh
+python ../src/server_sm.py
+
+exit 0
