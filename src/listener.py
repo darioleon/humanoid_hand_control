@@ -11,7 +11,7 @@ def callback(data):
 def listener():
 
     rospy.init_node('listener', anonymous=True)
-    rospy.Subscriber("serverclient", Hand_info, callback)
+    rospy.Subscriber("handData_pub", Hand_info, callback)
     rospy.spin()
 
 if __name__ == '__main__':
