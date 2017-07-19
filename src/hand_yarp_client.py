@@ -5,7 +5,7 @@ from time import sleep
 class Hand:
 
     #init vars & YARP ports for comm
-    def __init__(self):
+    def __init__(self,ident):
         #global vars for a Hand object
         self.hand_out={"Con_Mod": 0.0,
               "Enable": [0.0]*5,
@@ -73,14 +73,14 @@ class Hand:
         #init YARP ports
         y.Network.init()
         self.port_out = y.BufferedPortBottle()
-        self.portname_out="/handclient/out"
+        self.portname_out="/handclient/out" + str(ident)
         self.port_out.open(self.portname_out)
         self.style = y.ContactStyle()
         self.style.persisten = 1
         self.handportname_in = "/hand/in"
         y.Network.connect(self.portname_out, self.handportname_in, self.style)
         self.port_in = y.BufferedPortBottle()
-        self.portname_in = "/handclient/in"
+        self.portname_in = "/handclient/in" + str(ident)
         self.port_in.open(self.portname_in)
         self.handportname_out = "/hand/out"
         y.Network.connect(self.handportname_out, self.portname_in, self.style)

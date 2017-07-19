@@ -10,7 +10,7 @@ from hand_code.srv import *
 
 ### GLOBAL VARS ###
 
-hand=Hand()
+hand=Hand(2) #el 2 es el id del puerto yarp
 
 def handle_server(req):
 

@@ -1,0 +1,3 @@
+16:05:56 : se borraron codigos que no se utilizaban del directorio src
+16:06:47 : se consiguió el funcionamiento simultáneo de los métodos de envío y recolección de datos de la mano
+17:52:33 : traté de hacer que funcionara run_client_test_ros.sh, los comandos que usan screen y la ejecución de client_test_ros.py funciona bien. Lo que no funciona son los comandos que usan nohup. si los copio y los uso en una terminal sí funcionan, pero al usarlos en ese script no, se cierran

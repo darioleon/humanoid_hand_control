@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from ros_client import HandClient
+from ros_client_sm import HandClient
 from time import sleep 
 
 hand = HandClient()

@@ -10,7 +10,7 @@ from hand_code.srv import *
 
 ### GLOBAL VARS ###
 
-hand=Hand()
+hand=Hand(1)
 
 def server_yarp():
     
@@ -112,27 +112,27 @@ def handle_server(req):
         finger = req.var1
         print "finger:", finger
         hand.enable(finger)
-        hand_serviceResponse("algo")
+        hand_serviceResponse("done")
     elif command == "enabled":
         finger = req.var1
         print "finger:", finger
         hand_resp=Hand_info()
         hand_resp.Enabled = hand.enabled(finger)
         pub.publish(hand_resp)
-        hand_serviceResponse("algo")
+        hand_serviceResponse("done")
     elif command == "enableall":
         hand.enable_all()
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "disable":
         finger = req.var1
         print "finger:", finger
         hand.disable(finger)
-        hand_serviceResponse("algo")
+        hand_serviceResponse("done")
     elif command == "setcontroller":
         mode = req.var1
         print "mode:", mode
         hand.set_controller_mode(mode)
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "setpos":
         finger = req.var1
         joint = req.var2
@@ -141,7 +141,7 @@ def handle_server(req):
         print "joint:", joint 
         print "position:", pos
         hand.set_pos(finger, joint, pos)
-        hand_serviceResponse("algo")
+        hand_serviceResponse("done")
     elif command == "setdamp":
         finger = req.var1
         joint = req.var2
@@ -150,7 +150,7 @@ def handle_server(req):
         print "joint:", joint 
         print "damping:", damp
         hand.set_damping(finger, joint, damp)
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "setstiff":                
         finger = req.var1
         joint = req.var2
@@ -159,7 +159,7 @@ def handle_server(req):
         print "joint:", joint 
         print "stiffness:", stiff
         hand.set_stiffness(finger, joint, stiff)
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "setvel":
         finger = req.var1
         joint = req.var2
@@ -168,52 +168,20 @@ def handle_server(req):
         print "joint:", joint 
         print "velocity:", vel
         hand.set_velocity(finger, joint, vel)
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "updinp":
         hand.hand_in=hand.update_input()
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "sendcmd":
         hand.send_cmd()
-        return hand_serviceResponse("algo")
+        return hand_serviceResponse("done")
     elif command == "update":
         time = req.var1
         print "time:", time
         hand.update(time)
-        hand_serviceResponse("algo")
-    elif command == "gettorque":
-        hand.hand_in=hand.update_input()
-        hand_resp=Hand_info()
-        finger=req.var1
-        hand_resp.finger=finger
-        hand_resp.Enabled=hand.hand_in["Enabled"][finger]
-        hand_resp.Torque[0]=hand.hand_in["Torque"][finger*3 + 0]
-        hand_resp.Torque[1]=hand.hand_in["Torque"][finger*3 + 1]
-        hand_resp.Torque[2]=hand.hand_in["Torque"][finger*3 + 2]
-        pub.publish(hand_resp)
-        hand_serviceResponse("algo")
-    elif command == "getpos":
-        hand.hand_in=hand.update_input()
-        hand_resp=Hand_info()
-        finger=req.var1
-        hand_resp.finger=finger
-        hand_resp.Enabled=hand.hand_in["Enabled"][finger]
-        hand_resp.Pos[0]=hand.hand_in["Pos"][finger*3 + 0]
-        hand_resp.Pos[1]=hand.hand_in["Pos"][finger*3 + 1]
-        hand_resp.Pos[2]=hand.hand_in["Pos"][finger*3 + 2]
-        pub.publish(hand_resp)
-        return hand_serviceResponse("algo")
-    elif command == "getvelocity":
-        hand.hand_in=hand.update_input()
-        hand_resp=Hand_info()
-        finger=req.var1
-        hand_resp.finger=finger
-        hand_resp.Enabled=hand.hand_in["Enabled"][finger]
-        hand_resp.Velocity[0]=hand.hand_in["Velocity"][finger*3 + 0]
-        hand_resp.Velocity[1]=hand.hand_in["Velocity"][finger*3 + 1]
-        hand_resp.Velocity[2]=hand.hand_in["Velocity"][finger*3 + 2]
-        pub.publish(hand_resp)
+        hand_serviceResponse("done")
     hand.update(time) 
-    return hand_serviceResponse("algo")
+    return hand_serviceResponse("done")
 
 
 def server_ros():
