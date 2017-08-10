@@ -46,7 +46,7 @@ def handle_server(req):
         hand_resp=Hand_info()
         hand_resp.AllData=str(hand.hand_in)
         pub.publish(hand_resp)
-    hand.update(time) 
+    #hand.send_cmd() 
     return hand_serviceResponse("algo")
 
 

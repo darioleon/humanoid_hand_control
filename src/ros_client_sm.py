@@ -76,38 +76,16 @@ class HandClient:
         resp=server("updinp", 0, 0, 0)
         pass
 
-    def send_cmd(self, finger, joint, velocity):
+    def send_cmd(self):
         server = rospy.ServiceProxy('server',hand_service)
-        resp=server("sendcmd", finger,joint,velocity)
+        resp=server("sendcmd", 0, 0, 0)
         pass
 
     def update(self, time=0):
         server = rospy.ServiceProxy('server',hand_service)
         resp=server("setpos", time, 0, 0)
         pass
-
-    def get_torque(self,finger):
-        server = rospy.ServiceProxy('server',hand_service)
-        resp=server("gettorque", finger, 0, 0)
-        pass
-
-    def get_pos(self,finger):
-        server = rospy.ServiceProxy('server',hand_service)
-        resp=server("gettorque", finger, 0, 0)
-        pass
     
-    def get_velocity(self,finger):
-        server = rospy.ServiceProxy('server',hand_service)
-        resp=server("getvel", finger, 0, 0)
-        pass
-    
-    def routine(self, routine=[["enable",[1,1,0,0,0]],  
-		       ["sleep", 3],
-		       ["move",["Thumb","Outer",40],["Index","Outer",60]], 
-		       ["sleep", 3], 
-		       ["move",["Thumb","Outer",0],["Index","Outer",0]], 
-		       ["sleep", 3]]):
-        pass
 
         
         

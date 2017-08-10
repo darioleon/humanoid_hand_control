@@ -1,0 +1,2 @@
+19:21:16 : s
+19:23:44 : se creó la carpeta yarp_API con los códigos necesarios para realizar la misma función que los de ros de forma que su uso sea lo más parecido posible. Hice la parte de get_data y funcionó bien, ahora sigue la de get_all, y borrar lo que no sea necesario de cada código

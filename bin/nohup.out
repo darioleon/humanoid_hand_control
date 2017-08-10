@@ -8,3 +8,29 @@ Success: Added connection from /hand/out to tcp://handclient/in1
 [ERROR] [1500506776.678836]: Error processing request: 'NoneType' object has no attribute 'get'
 ['Traceback (most recent call last):\n', '  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py", line 623, in _handle_request\n    response = convert_return_to_response(self.handler(request), self.response_class)\n', '  File "../src/server_sm.py", line 183, in handle_server\n    hand.update(time)\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 263, in update\n    self.update_input()\n', '  File "/home/robot/catkin_ws/src/hand_code/src/hand_yarp_client.py", line 231, in update_input\n    self.hand_in[item][i] = bottle_in.get(j).asDouble()\n', "AttributeError: 'NoneType' object has no attribute 'get'\n"]
 bash: ./hand_yarp: No such file or directory
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /hand/out
+yarp: No connection to nameserver
+yarp: *** try running: yarp detect ***
+Failure: could not find source port /handclient/out1
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT
+Ejecutando run_server.sh
+yarp: Port /handclient/out1 active at tcp://192.168.200.10:10002
+Failure: could not find destination port /hand/in
+yarp: Port /handclient/in1 active at tcp://192.168.200.10:10003
+Failure: could not find source port /hand/out
+../src/server_sm.py:100: SyntaxWarning: The publisher should be created with an explicit keyword argument 'queue_size'. Please see http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers for more information.
+  pub=rospy.Publisher('serverclient', Hand_info)
+Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.
+server initialized
+------------------------
+operation: enable
+finger: 0
+OUTPUT
+INPUT

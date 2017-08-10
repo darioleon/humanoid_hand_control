@@ -6,11 +6,6 @@ import yarp as y
 import rospy #puede que la persona no tenga rospy, entonces es error
 from hand_code.msg import Handmsg #lo mismo de arriba
 from hand_code.msg import Hand_info
-from hand_code.srv import *
-
-### GLOBAL VARS ###
-
-hand=Hand(1)
 
 def server_yarp():
     
@@ -95,115 +90,127 @@ def server_yarp():
 #
 #
 #
-def handle_server(req):
-
-    pub=rospy.Publisher('serverclient', Hand_info)
-    rate=rospy.Rate(10)
-    global hand
+def callback(data):    
+    pub = rospy.Publisher('serverclient', Hand_info)
+    rate = rospy.Rate(10)
+    #hand = Hand()
+    #hand.set_controller_mode(1)
     
     #util vars
     time = 2
-
     
-    command = req.var0
-    print "------------------------"
-    print "operation:", command
+    command = data.var0
+    print command
     if command == "enable":
-        finger = req.var1
-        print "finger:", finger
+        finger = data.var1
+        print finger
         hand.enable(finger)
-        hand_serviceResponse("done")
     elif command == "enabled":
-        finger = req.var1
-        print "finger:", finger
+        finger = data.var1
         hand_resp=Hand_info()
+        hand_resp.finger =finger
         hand_resp.Enabled = hand.enabled(finger)
         pub.publish(hand_resp)
-        hand_serviceResponse("done")
     elif command == "enableall":
         hand.enable_all()
-        return hand_serviceResponse("done")
     elif command == "disable":
-        finger = req.var1
-        print "finger:", finger
+        finger = data.var1
+        print finger
         hand.disable(finger)
-        hand_serviceResponse("done")
     elif command == "setcontroller":
-        mode = req.var1
-        print "mode:", mode
+        mode = data.var1
+        print mode
         hand.set_controller_mode(mode)
-        return hand_serviceResponse("done")
     elif command == "setpos":
-        finger = req.var1
-        joint = req.var2
-        pos = req.var3
+        finger = data.var1
+        joint = data.var2
+        pos = data.var3
         print "finger:", finger 
-        print "joint:", joint 
-        print "position:", pos
+        print joint 
+        print pos
         hand.set_pos(finger, joint, pos)
-        hand_serviceResponse("done")
     elif command == "setdamp":
-        finger = req.var1
-        joint = req.var2
-        damp = req.var3
-        print "finger:", finger 
-        print "joint:", joint 
-        print "damping:", damp
+        finger = data.var1
+        joint = data.var2
+        damp = data.var3
+        print finger 
+        print joint 
+        print damp
         hand.set_damping(finger, joint, damp)
-        return hand_serviceResponse("done")
     elif command == "setstiff":                
-        finger = req.var1
-        joint = req.var2
-        stiff = req.var3
-        print "finger:", finger 
-        print "joint:", joint 
-        print "stiffness:", stiff
+        finger = data.var1
+        joint = data.var2
+        stiff = data.var3
+        print finger 
+        print joint 
+        print stiff
         hand.set_stiffness(finger, joint, stiff)
-        return hand_serviceResponse("done")
     elif command == "setvel":
-        finger = req.var1
-        joint = req.var2
-        vel = req.var3
-        print "finger:", finger 
-        print "joint:", joint 
-        print "velocity:", vel
+        finger = data.var1
+        joint = data.var2
+        vel = data.var3
+        print finger 
+        print joint 
+        print vel
         hand.set_velocity(finger, joint, vel)
-        return hand_serviceResponse("done")
     elif command == "updinp":
         hand.hand_in=hand.update_input()
-        return hand_serviceResponse("done")
     elif command == "sendcmd":
         hand.send_cmd()
-        return hand_serviceResponse("done")
     elif command == "update":
-        time = req.var1
-        print "time:", time
+        time = data.var1
         hand.update(time)
-        hand_serviceResponse("done")
-    hand.send_cmd() 
-    return hand_serviceResponse("done")
-
+    elif command == "gettorque":
+        hand.hand_in=hand.update_input()
+        hand_resp=Hand_info()
+        finger=data.var1
+        hand_resp.finger=finger
+        hand_resp.Enabled=hand.hand_in["Enabled"][finger]
+        hand_resp.Torque[0]=hand.hand_in["Torque"][finger*3 + 0]
+        hand_resp.Torque[1]=hand.hand_in["Torque"][finger*3 + 1]
+        hand_resp.Torque[2]=hand.hand_in["Torque"][finger*3 + 2]
+        pub.publish(hand_resp)
+    elif command == "getpos":
+        hand.hand_in=hand.update_input()
+        hand_resp=Hand_info()
+        finger=data.var1
+        hand_resp.finger=finger
+        hand_resp.Enabled=hand.hand_in["Enabled"][finger]
+        hand_resp.Pos[0]=hand.hand_in["Pos"][finger*3 + 0]
+        hand_resp.Pos[1]=hand.hand_in["Pos"][finger*3 + 1]
+        hand_resp.Pos[2]=hand.hand_in["Pos"][finger*3 + 2]
+        pub.publish(hand_resp)
+    elif command == "getvel":
+        hand.hand_in=hand.update_input()
+        hand_resp=Hand_info()
+        finger=data.var1
+        hand_resp.finger=finger
+        hand_resp.Enabled=hand.hand_in["Enabled"][finger]
+        hand_resp.Velocity[0]=hand.hand_in["Velocity"][finger*3 + 0]
+        hand_resp.Velocity[1]=hand.hand_in["Velocity"][finger*3 + 1]
+        hand_resp.Velocity[2]=hand.hand_in["Velocity"][finger*3 + 2]
+        pub.publish(hand_resp)
+    hand.update(time) 
 
 def server_ros():
-    rospy.init_node('hand_server', anonymous=True)
-    s = rospy.Service('server',hand_service, handle_server)
-    print "server initialized"
+    rospy.init_node('server', anonymous=True)
+    rospy.Subscriber('clientserver',Handmsg,callback)
+    #hand.hand_in=hand.update_input()
+    print hand.hand_in
+    print "------------------"
     rospy.spin()
 
 
-
-def main():
+if __name__ == "__main__":
 
     #init hand.
-
+    hand = Hand()
     hand.set_controller_mode(1)
     
     #server_yarp()
     try:
         server_ros()
     except rospy.ROSInterruptException:
-        return 1
-    return 0
+        pass
 
-if __name__ == "__main__":
-    main()
+

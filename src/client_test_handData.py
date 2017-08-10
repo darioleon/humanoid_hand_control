@@ -6,8 +6,8 @@ from time import sleep
 hand = HandClient()
 
 while True:
-    print "getting thumb Data"
+    print "getting all Data"
     #hand.get_data(hand.fingers["Thumb"])
     hand.get_all()
-    sleep(2)
+    sleep(0.5)
 

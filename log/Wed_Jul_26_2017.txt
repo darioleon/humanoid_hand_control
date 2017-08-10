@@ -1,0 +1,2 @@
+16:08:00 : d
+16:12:26 : el envío y recibimiento de datos de la mano no estaba del todo bien implementado, por lo que se corrigió en los siguientes aspectos. cada vez que se ejecutaba un comando, se devolvía a su posición original sin pedirlo, esto sucedía por tener update al final del ciclo del server_sm y server_handData. En el primero se cmabió por send_cmd y en el segundo por update_input.
