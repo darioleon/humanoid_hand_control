@@ -1,0 +1,2 @@
+16:35:20 : terminé el API de yarp. Ya funciona el envío y recivimiento de datos de forma simultánea por medio de yarp.
+17:44:49 : lo que sigue ahora es hacer pruebas con la mano para definir valores límites para cada variable para establecer límites de seguridad con los cuales usar la mano. Experimentar con cuidade y con movimientos lentos, para stiffness y velocity ver los valores predeterminados de hand_yarp_client y trabajar con valores menores o iguales

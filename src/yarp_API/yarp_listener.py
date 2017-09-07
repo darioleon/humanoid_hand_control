@@ -34,6 +34,11 @@ def listener():
             print "Position:", pos
             print "Velocity:", vel
             print "Torque:", tor
+        if command == "getall":
+            allData = bottle_in.get(1).asString()
+            print allData
+            print ""
+            
         
             
 if __name__ == "__main__":

@@ -23,16 +23,16 @@ class HandClient:
         #init YARP ports
         y.Network.init()
         self.port_out = y.BufferedPortBottle()
-        self.portname_out="/client/out"
+        self.portname_out="/data_client/out"
         self.port_out.open(self.portname_out)
         self.style = y.ContactStyle()
         self.style.persisten = 1
-        self.serverportname_in = "/server/in"
-        y.Network.connect(self.portname_out, self.serverportname_in, self.style) #conecta la salida del cliente con la entrada del servidor
+        self.serverportname_in = "/data_server/in"
+        y.Network.connect(self.portname_out, self.serverportname_in, self.style)
         self.port_in = y.BufferedPortBottle()
-        self.portname_in = "/client/in"
+        self.portname_in = "/data_client/in"
         self.port_in.open(self.portname_in)
-        self.serverportname_out = "/server/out"
+        self.serverportname_out = "/data_server/out"
         #y.Network.connect(self.serverportname_out, self.portname_in, self.style) #conecta la salida del servidor con la entrada del cliente
         self.listenerportname_in = "/listener/in"
         y.Network.connect(self.serverportname_out, self.listenerportname_in, self.style)
@@ -43,121 +43,17 @@ class HandClient:
         y.Network.disconnect(self.portname_out, self.serverportname_in, self.style)
         y.Network.fini()
 
-    def enable(self, finger):
-        bottle = self.port_out.prepare() #se prepara
-        bottle.clear() #borra lo que tenia
-        bottle.addString("enable") #establece el string en la posicion 0
-        bottle.addInt(finger) #establece el dedo en la posicion 1       
-        self.port_out.write() #escribe
-        pass
-
-    def enabled(self, finger):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("enabled")
-        bottle.addInt(finger)        
-        self.port_out.write()
-        sleep(5)
-        bottle_in = self.port_in.read()
-        val = bottle_in.get(0).asDouble()
-        return(val)
-
     def get_data(self, finger):
-        bottle =self.port_out.prepare()
+        bottle = self.port_out.prepare()
         bottle.clear()
         bottle.addString("getdata")
         bottle.addInt(finger)
         self.port_out.write()
-        
-    def enable_all(self):
+
+    def get_all(self):
         bottle = self.port_out.prepare()
         bottle.clear()
-        bottle.addString("enableall")        
+        bottle.addString("getall")
         self.port_out.write()
-        pass
 
-    def disable(self, finger):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("disable")
-        bottle.addInt(finger)        
-        self.port_out.write()
-        pass
 
-    def set_pos(self, finger, joint, pos): 
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("setpos")
-        bottle.addInt(finger)
-        bottle.addInt(joint) #establece en la posicion 2 el joint
-        bottle.addDouble(pos) #establece en la posicion 3 la posicion
-        self.port_out.write()
-        pass
-
-    def set_controller_mode(self, mode):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("setcontroller")
-        bottle.addInt(mode)
-        pass
-
-    def set_damping(self, finger, joint, damping):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("setdamp")
-        bottle.addInt(finger)
-        bottle.addInt(joint)
-        bottle.addDouble(damping)        
-        self.port_out.write()
-        pass
-
-    def set_stiffness(self, finger, joint, stiffness):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("setstiff")
-        bottle.addInt(finger)
-        bottle.addInt(joint)
-        bottle.addDouble(stiffness)        
-        self.port_out.write()
-        pass
-
-    def set_velocity(self, finger, joint, velocity):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("setvel")
-        bottle.addInt(finger)
-        bottle.addInt(joint)
-        bottle.addDouble(velocity)        
-        self.port_out.write()
-        pass
-
-    def update_input(self):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("update")        
-        self.port_out.write()
-        pass
-
-    def send_cmd(self, finger, joint, velocity):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("sendcmd")        
-        self.port_out.write()
-        pass
-
-    #pseudo-protocol for routines
-    #routine: [[command, val], ...]
-    #ex: [["enable",val], ["stiffness",val], ["move",val], ["sleep,val"], ["move",val], ["sleep,val"], ["move",val], ...]
-    #enable, [val, val, val, val, val]
-    #move, [finger, joint, angle],[finger, joint, angle],[finger, joint, angle],[finger, joint, angle],[finger, joint, angle]
-    #move, [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle]
-    #stiffness, [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle]
-    #velocity, [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle]
-    #sleep, val
-    def routine(self, routine=[["enable",[1,1,0,0,0]],  
-		       ["sleep", 3],
-		       ["move",["Thumb","Outer",40],["Index","Outer",60]], 
-		       ["sleep", 3], 
-		       ["move",["Thumb","Outer",0],["Index","Outer",0]], 
-		       ["sleep", 3]]):
-        pass

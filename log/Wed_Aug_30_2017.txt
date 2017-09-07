@@ -1,0 +1,2 @@
+Tuve el problema de que la mano no servía ni con FFH. La comunicación era nula o con muchas interrupciones. Esto fue debido a que el modem donde se conectan las compus tenía cables pegados que probablemente estaban haciendo un loop que provocaba que los datos se perdiera. Solución: desconectar esos cables o conectar directamente el computador de la mano con la computadora.
+Se hico la demo del apretón de manos

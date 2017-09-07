@@ -1,0 +1,1 @@
+17:11:06 : obtuve valores límites de posición de cada dedo, algunos cuidados a la hora de usar la mano y corregí algunos errores del server_sm

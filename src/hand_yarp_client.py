@@ -4,22 +4,22 @@ from time import sleep
 
 class Hand:
 
-    #init vars & YARP ports for comm
+    ##init vars & YARP ports for comm
     def __init__(self,ident):
-        #global vars for a Hand object
+        ##global vars for a Hand object
         self.hand_out={"Con_Mod": 0.0,
               "Enable": [0.0]*5,
               "Pos_Com": [0.0]*15,
               "Stiffness": [0.023]*15,
               "Damping": [0.0]*15,
-              "Velocity": [120.0]*15,
+              "Velocity": [50.0]*15,
               "Kp": [5.0]*15,
               "Con_Mod1": 0.0,
               "Enable1": [0.0]*5,
               "Pos_Com1": [0.0]*15,
               "Stiffness1": [0.023]*15,
               "Damping1": [0.0]*15,
-              "Velocity1": [120.0]*15,
+              "Velocity1": [50.0]*15,
               "Kp1": [5.0]*15,
               "emergency": 0.0
             }
@@ -70,7 +70,7 @@ class Hand:
             "Abductor": 2
         }
 
-        #init YARP ports
+        ##init YARP ports
         y.Network.init()
         self.port_out = y.BufferedPortBottle()
         self.portname_out="/handclient/out" + str(ident)
@@ -85,7 +85,7 @@ class Hand:
         self.handportname_out = "/hand/out"
         y.Network.connect(self.handportname_out, self.portname_in, self.style)
 
-    #close YARP ports for comm
+    ##close YARP ports for comm
     def __del__(self):
         y.Network.disconnect(self.handportname_out, self.portname_in, self.style)
         y.Network.disconnect(self.portname_out, self.handportname_in, self.style)
@@ -144,9 +144,9 @@ class Hand:
     def set_controller_mode(self, mode):
         self.hand_out["Con_Mod"] = mode
 
-	def set_damping(self, finger, joint, damping):
-		self.hand_out["Damping"][finger*3+joint] = damping
-		pass
+    def set_damping(self, finger, joint, damping):
+        self.hand_out["Damping"][finger*3+joint] = damping
+        pass
 
     def set_stiffness(self, finger, joint, stiffness):
         self.hand_out["Stiffness"][finger*3+joint] = stiffness
@@ -157,9 +157,9 @@ class Hand:
             self.hand_out["Stiffness"][finger*3+i] = stiffness
         pass
 
-	def set_velocity(self, finger, joint, velocity):
-		self.hand_out["Velocity"][finger*3+joint] = velocity
-		pass
+    def set_velocity(self, finger, joint, velocity):
+        self.hand_out["Velocity"][finger*3+joint] = velocity
+        pass
 		
     #pseudo-protocol for routines
     #routine: [[command, val], ...]
@@ -176,7 +176,7 @@ class Hand:
 		       ["sleep", 3], 
 		       ["move",["Thumb","Outer",0],["Index","Outer",0]], 
 		       ["sleep", 3]]):
-		#init code here for routine
+		##init code here for routine
 		for step in routine:
 			cmd = step[0]
 			#"switch" for command

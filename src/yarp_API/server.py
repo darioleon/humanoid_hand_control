@@ -32,6 +32,19 @@ def server_yarp():
             bottle_out.clear()
             bottle_out.addDouble(val)
             portsrv_out.write()
+        elif command == "gettorque":
+            finger = bottle_in.get(1).asInt()
+            joint = bottle_in.get(2).asInt()
+            torque = bottle_in.get(3).asDouble()
+            print finger 
+            print joint 
+            print torque
+            hand.hand_in = hand.update_input()
+            handData=[]
+            val=hand.hand_in["Torque"][finger*3+joint]
+            bottle_out.clear()
+            bottle_out.addDouble(val)
+            portsrv_out.write()
         elif command == "enableall":
             hand.enable_all()
         elif command == "disable":
@@ -74,14 +87,18 @@ def server_yarp():
             print joint 
             print vel
             hand.set_velocity(finger, joint, vel)
+
         elif command == "updinp":
             hand.update_input()
         elif command == "sendcmd":
+            print "sendcmd"
             hand.send_cmd()
         elif command == "update":
+            print "update"
             time = bottle_in.get(1).asInt()
             hand.update(time)
-        hand.update(time)
+        hand.send_cmd()
+        #sleep(0.1)
 
 
 if __name__ == "__main__":

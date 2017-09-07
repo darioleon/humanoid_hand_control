@@ -28,12 +28,12 @@ class HandClient:
         self.style = y.ContactStyle()
         self.style.persisten = 1
         self.serverportname_in = "/server/in"
-        y.Network.connect(self.portname_out, self.serverportname_in, self.style) #conecta la salida del cliente con la entrada del servidor
+        y.Network.connect(self.portname_out, self.serverportname_in, self.style) 
         self.port_in = y.BufferedPortBottle()
         self.portname_in = "/client/in"
         self.port_in.open(self.portname_in)
         self.serverportname_out = "/server/out"
-        y.Network.connect(self.serverportname_out, self.portname_in, self.style) #conecta la salida del servidor con la entrada del cliente
+        y.Network.connect(self.serverportname_out, self.portname_in, self.style)
 
     #close YARP ports for comm
     def __del__(self):
@@ -42,11 +42,11 @@ class HandClient:
         y.Network.fini()
 
     def enable(self, finger):
-        bottle = self.port_out.prepare() #se prepara
-        bottle.clear() #borra lo que tenia
-        bottle.addString("enable") #establece el string en la posicion 0
-        bottle.addInt(finger) #establece el dedo en la posicion 1       
-        self.port_out.write() #escribe
+        bottle = self.port_out.prepare() 
+        bottle.clear() 
+        bottle.addString("enable") 
+        bottle.addInt(finger)      
+        self.port_out.write() 
         pass
 
     def enabled(self, finger):
@@ -60,6 +60,17 @@ class HandClient:
         val = bottle_in.get(0).asDouble()
         return(val)
 
+    def get_torque(self, finger, joint):
+        bottle = self.port_out.prepare()
+        bottle.clear()
+        bottle.addString("gettorque")
+        bottle.addInt(finger)
+        bottle.addInt(joint)
+        self.port_out.write()
+        bottle_in = self.port_in.read()
+        val = bottle_in.get(0).asDouble()
+        return(val)
+        
     def enable_all(self):
         bottle = self.port_out.prepare()
         bottle.clear()
@@ -121,6 +132,7 @@ class HandClient:
         bottle.addDouble(velocity)        
         self.port_out.write()
         pass
+    
 
     def update_input(self):
         bottle = self.port_out.prepare()
@@ -129,10 +141,18 @@ class HandClient:
         self.port_out.write()
         pass
 
-    def send_cmd(self, finger, joint, velocity):
+    def send_cmd(self):
         bottle = self.port_out.prepare()
         bottle.clear()
         bottle.addString("sendcmd")        
+        self.port_out.write()
+        pass
+
+    def update(self, time):
+        bottle = self.port_out.prepare()
+        bottle.clear()
+        bottle.addString("update1")
+        bottle.addInt(time)
         self.port_out.write()
         pass
 
