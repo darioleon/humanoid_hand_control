@@ -1,0 +1,2 @@
+18:28:13 : se creó hand_set_service.srv y hand_get_service.srv, que son para trabajar por serparado los comandos de set y get de la mano. También se modificó server_sm para que utilizara diferentes funciones en caso de comandos tipo set y gets. También se modificó ros_client_sm par aque funcionara. Además las funcniones de get ya sirven.
+18:28:58 : lo que sigue es mejorar el código y hacerle estas modificaciones al API de yarp

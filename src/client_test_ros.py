@@ -4,6 +4,7 @@ from ros_client_sm import HandClient
 from time import sleep 
 
 hand = HandClient()
+
 #enable fingers
 hand.enable(0)
 sleep(2)
@@ -13,6 +14,8 @@ hand.enable(2)
 sleep(2)
 hand.enable(3)
 sleep(2)
+tor=hand.get_torque(hand.fingers["Thumb"],hand.arts["Outer"])
+print tor
 #set zero position
 hand.set_pos(hand.fingers["Thumb"], hand.arts["Outer"],0)
 sleep(0.1)

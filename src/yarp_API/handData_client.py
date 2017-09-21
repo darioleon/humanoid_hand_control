@@ -1,11 +1,12 @@
 import yarp as y
 from time import sleep
 
+## Client class for hand data reciving
 class HandClient:
 
-    #init vars & YARP ports for comm
+    ##Define the fingers and articulations id, then wait for the service called handData_service to be initialized
     def __init__(self):
-
+        ##Default definition fingers id
         self.fingers={
             "Thumb": 0,
             "Index": 1,
@@ -13,7 +14,7 @@ class HandClient:
             "Ring": 3,
             "Pinky": 4
         }
-
+        ##Default definition articulation id
         self.arts={
             "Outer": 0,
             "Inner": 1,
@@ -21,6 +22,7 @@ class HandClient:
         }
 
         #init YARP ports
+    
         y.Network.init()
         self.port_out = y.BufferedPortBottle()
         self.portname_out="/data_client/out"
@@ -42,14 +44,16 @@ class HandClient:
         y.Network.disconnect(self.serverportname_out, self.portname_in, self.style)
         y.Network.disconnect(self.portname_out, self.serverportname_in, self.style)
         y.Network.fini()
-
+        
+    ## Gets a finger data
+    #  @param finger int finger id.
     def get_data(self, finger):
         bottle = self.port_out.prepare()
         bottle.clear()
         bottle.addString("getdata")
         bottle.addInt(finger)
         self.port_out.write()
-
+    ##Gets all fingers data
     def get_all(self):
         bottle = self.port_out.prepare()
         bottle.clear()

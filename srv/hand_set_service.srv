@@ -1,0 +1,6 @@
+string command
+int64 finger
+int64 joint
+float64 value
+---
+string response

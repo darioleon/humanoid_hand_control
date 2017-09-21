@@ -144,9 +144,9 @@ class Hand:
     def set_controller_mode(self, mode):
         self.hand_out["Con_Mod"] = mode
 
-	def set_damping(self, finger, joint, damping):
-		self.hand_out["Damping"][finger*3+joint] = damping
-		pass
+    def set_damping(self, finger, joint, damping):
+        self.hand_out["Damping"][finger*3+joint] = damping
+        pass
 
     def set_stiffness(self, finger, joint, stiffness):
         self.hand_out["Stiffness"][finger*3+joint] = stiffness
@@ -157,9 +157,9 @@ class Hand:
             self.hand_out["Stiffness"][finger*3+i] = stiffness
         pass
 
-	def set_velocity(self, finger, joint, velocity):
-		self.hand_out["Velocity"][finger*3+joint] = velocity
-		pass
+    def set_velocity(self, finger, joint, velocity):
+        self.hand_out["Velocity"][finger*3+joint] = velocity
+        pass
 		
     #pseudo-protocol for routines
     #routine: [[command, val], ...]

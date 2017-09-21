@@ -5,8 +5,9 @@ from time import sleep
 import yarp as y
 
 def listener():
-    
-    #init yarp ports for comm
+    """Init yarp port /listener/in for communication. This is conected with /data_server/out of the script server_listener.py"""
+    """This is a infinite loop to obtain a finger data or all fingers data and prints it on the screen"""
+
     y.Network.init()
     portlistener_in = y.BufferedPortBottle()
     portlistener_in.open("/listener/in")

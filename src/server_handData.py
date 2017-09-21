@@ -3,18 +3,19 @@
 from hand_yarp_client import Hand
 from time import sleep
 import yarp as y
-import rospy #puede que la persona no tenga rospy, entonces es error
-from hand_code.msg import Handmsg #lo mismo de arriba
+import rospy 
+from hand_code.msg import Handmsg 
 from hand_code.msg import Hand_info
 from hand_code.srv import *
 
-### GLOBAL VARS ###
-
-hand=Hand(2) #el 2 es el id del puerto yarp
+## GLOBAL VARS\n
+##hand=Hand(2) 2 is the parameter for client arp port especifically for this server
+hand=Hand(2)
 
 def handle_server(req):
-
-    pub=rospy.Publisher('handData_pub', Hand_info)
+    """Intermittent server functions, recive a request parameter and excecute operation over hand"""
+    """creates a topic called handData_pub and publish over it a finger data or all fingers data"""
+    pub=rospy.Publisher('handData_pub', Hand_info) 
     rate=rospy.Rate(10)
     global hand
     
@@ -51,15 +52,16 @@ def handle_server(req):
 
 
 def server_ros():
+    """Create server node called hand_server, creates the server handData_service and keep running the server in a loop"""
     rospy.init_node('handData_server', anonymous=True)
-    s = rospy.Service('handData_service',hand_service, handle_server)
+    s = rospy.Service('handData_service',hand_service, handle_server) ##Init ros service calling handle_server with hand_service object
     print "handData_server initialized"
-    rospy.spin()
+    rospy.spin() ##cycling the listen client request
 
 
 
 def main():
-
+    """Main function caller of the function server_ros()""" 
     #init hand.
 
     hand.set_controller_mode(1)

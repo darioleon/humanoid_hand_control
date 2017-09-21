@@ -5,8 +5,8 @@ from time import sleep
 import yarp as y
 
 def server_yarp():
-    
-    #init yarp ports for comm
+    """Init yarp ports for communication /data_server/in and /data_server/out"""
+    """Depending on the command it gets a finger data or all fingers data and send it through the port /data_server/out"""
     y.Network.init()
     portsrv_in = y.BufferedPortBottle()
     portsrv_in.open("/data_server/in")
@@ -54,7 +54,8 @@ def server_yarp():
 
 if __name__ == "__main__":
 
-    #init hand.
+    ##init hand
+    ##hand=Hand(3) 3 is the parameter for client yarp port especifically for this server
     hand = Hand(4)
     hand.set_controller_mode(1)
     

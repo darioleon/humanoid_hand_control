@@ -55,7 +55,8 @@ find_package(catkin REQUIRED COMPONENTS
  add_service_files(
    FILES
    hand_service.srv
-   AddTwoInts.srv
+   hand_set_service.srv
+   hand_get_service.srv
  )
 
 ## Generate actions in the 'action' folder

@@ -5,7 +5,7 @@ from hand_code.srv import hand_service
 
 ## Client class for hand data reciving
 class HandClient:
-    
+    ##Define the fingers and articulations id, then wait for the service called handData_service to be initialized
     def __init__(self):
         ##Default definition fingers id
         self.fingers={
@@ -21,6 +21,7 @@ class HandClient:
             "Inner": 1,
             "Abductor": 2
         }
+        
         rospy.wait_for_service('handData_service')
 
     ## Gets a finger data
