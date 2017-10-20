@@ -8,7 +8,7 @@ def callback(data):
     val=Hand_info()
     val=data
     print "-----------------------------------"
-    print val
+    rospy.loginfo(val)
 
     
 def listener():    
