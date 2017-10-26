@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+from ros_client_sm import HandClient
+from time import sleep
+
+#enable fingers
+hand = HandClient()
+hand.enable(0)
+sleep(2)
+hand.enable(0)
+sleep(1)
+hand.set_pos(hand.fingers["Thumb"],hand.arts["Inner"],40)
+sleep(2)
+while(True):
+    hand_data = hand.get_data()
+    for i in range(0, 14):
+        if abs(hand_data["Torque"][i]) >= 0.07 or
+        abs(hand_data["Pos"][i]) >= 60 or
+        abs(hand_data["Vel"][i]) >= 120:
+            hand.set_pos(hand.fingers["Thumb"],hand.arts["Inner"], 0)
+            sleep(4)
+            

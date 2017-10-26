@@ -4,6 +4,34 @@ from hand_yarp_client import Hand
 from time import sleep
 import yarp as y
 
+"""def get_functions():
+    if command == "gettorque":
+        finger = bottle_in.get(1).asInt()
+        joint = bottle_in.get(2).asInt()
+        torque = bottle_in.get(3).asDouble()
+        print finger 
+        print joint 
+        print torque
+        hand.hand_in = hand.update_input()
+        handData=[]
+        val=hand.hand_in["Torque"][finger*3+joint]
+        bottle_out.clear()
+        bottle_out.addDouble(val)
+        portsrv_out.write()
+    if command == "getvel":
+        finger = bottle_in.get(1).asInt()
+        joint = bottle_in.get(2).asInt()
+        vel = bottle_in.get(3).asDouble()
+        print finger 
+        print joint 
+        print torque
+        hand.hand_in = hand.update_input()
+        handData=[]
+        val=hand.hand_in["Torque"][finger*3+joint]
+        bottle_out.clear()
+        bottle_out.addDouble(val)
+        portsrv_out.write()
+"""
 def server_yarp():
     """Init yarp ports for communication /server/in and /server/out"""
     """Depending on the command excecutes a function of the object Hand"""

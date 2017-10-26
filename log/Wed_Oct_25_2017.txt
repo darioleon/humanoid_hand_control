@@ -1,0 +1,3 @@
+17:56:01 : se terminó de hacer la función getdata de server_sm. De esta forma se puede obtener información de toda la mano con con el código de envío de datos a la mano.
+17:57:47 : se hizo el cliente client_test_security.py que lo que hace es revisar constantemente todos los valores de torque, posición y velocidad de cada joint para revisar que no se supere cierto valor máximo. Si se supera vuelve todos los dedos a su posción inicial.
+17:59:02 : Lo que sigue ahora es ver cómo modificar la velocidad para que el movimiento de los dedos sea más lento. Ariel aprobó el proyecto de hacer un guante para controlar la posición de los dedos de la mano

@@ -99,6 +99,9 @@ def handle_server_get(req):
             " position: {}".format(finger,joint,pos)
         )
         return hand_get_serviceResponse(str(pos))
+    elif command == "getdata":
+        hand.hand_in = hand.update_input()
+        return hand_get_serviceResponse(str(hand.hand_in))
     
 def handle_server_set(req):
     """This function runs when the client sends data to the hand: position, controller, damping, velocity, stiffness"""

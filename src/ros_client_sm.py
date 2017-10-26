@@ -1,10 +1,8 @@
 #!/usr/bin/env python
-import re
-import random
 import rospy
 from hand_code.srv import *
 from hand_code.msg import Hand_info
-
+import ast 
 
 ## Client class for hand data sending
 class HandClient:
@@ -110,6 +108,13 @@ class HandClient:
         resp = server("getpos", finger,joint) 
         resp = str(resp).split(" " )[1]
         return(float(resp))
+    
+    def get_data(self):
+        server = rospy.ServiceProxy('get_server', hand_get_service)
+        resp = server("getdata", 0, 0)
+        resp = str(resp).split("value: ")[1]
+        resp = ast.literal_eval(resp) #convert string to dictionary
+        return(resp)
 
     ##update fingers inputs. This is for getting the fingers data 
     def update_input(self):
