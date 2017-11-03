@@ -60,7 +60,7 @@ def handle_server(req):
     return hand_serviceResponse("done")
 
 def handle_server_get(req):
-    """This function runs when the client asks for getting hand data: torque, position and velocity"""
+    """This function runs when the client asks for getting hand data: torque, position, velocity and all data"""
     command =req.command
     print "-------------------------"
     if command == "gettorque":

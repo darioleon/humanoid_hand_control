@@ -1,5 +1,6 @@
 import yarp as y
 from time import sleep
+import ast
 
 ##Client class for hand data sending
 class HandClient:
@@ -64,20 +65,7 @@ class HandClient:
         bottle_in = self.port_in.read()
         val = bottle_in.get(0).asDouble()
         return(val)
-
-    ##Get joint torque
-    # @param finger int finger id
-    # @param joint int finger joint
-    def get_torque(self, finger, joint):
-        bottle = self.port_out.prepare()
-        bottle.clear()
-        bottle.addString("gettorque")
-        bottle.addInt(finger)
-        bottle.addInt(joint)
-        self.port_out.write()
-        bottle_in = self.port_in.read()
-        val = bottle_in.get(0).asDouble()
-        return(val)
+    
     ##Enable all fingers
     def enable_all(self):
         bottle = self.port_out.prepare()
@@ -85,6 +73,7 @@ class HandClient:
         bottle.addString("enableall")        
         self.port_out.write()
         pass
+    
     ##Disable finger
     # @param finger int finger id
     def disable(self, finger):
@@ -159,6 +148,59 @@ class HandClient:
         bottle.addDouble(velocity)        
         self.port_out.write()
         pass
+
+    ##Get joint torque
+    # @param finger int finger id
+    # @param joint int finger joint
+    def get_torque(self, finger, joint):
+        bottle = self.port_out.prepare()
+        bottle.clear()
+        bottle.addString("gettorque")
+        bottle.addInt(finger)
+        bottle.addInt(joint)
+        self.port_out.write()
+        bottle_in = self.port_in.read()
+        val = bottle_in.get(0).asDouble()
+        return(val)
+
+    ##Get joint velocity
+    # @param finger int finger id
+    # @param joint int finger joint
+    def get_velocity(self, finger, joint):
+        bottle = self.port_out.prepare()
+        bottle.clear()
+        bottle.addString("getvel")
+        bottle.addInt(finger)
+        bottle.addInt(joint)
+        self.port_out.write()
+        bottle_in = self.port_in.read()
+        val = bottle_in.get(0).asDouble()
+        return(val)
+
+    ##Get joint position
+    # @param finger int finger id
+    # @param joint int finger joint
+    def get_pos(self, finger, joint):
+        bottle = self.port_out.prepare()
+        bottle.clear()
+        bottle.addString("getpos")
+        bottle.addInt(finger)
+        bottle.addInt(joint)
+        self.port_out.write()
+        bottle_in = self.port_in.read()
+        val = bottle_in.get(0).asDouble()
+        return(val)
+
+    ##Get all data
+    def get_data(self):
+        bottle = self.port_out.prepare()
+        bottle.clear()
+        bottle.addString("getdata")
+        self.port_out.write()
+        bottle_in = self.port_in.read()
+        val = bottle_in.get(0).asString()
+        val = ast.literal_eval(val)
+        return(val)
     
     ##update fingers inputs. This is for getting the fingers data 
     def update_input(self):
@@ -186,21 +228,5 @@ class HandClient:
         self.port_out.write()
         pass
 
-    #pseudo-protocol for routines
-    #routine: [[command, val], ...]
-    #ex: [["enable",val], ["stiffness",val], ["move",val], ["sleep,val"], ["move",val], ["sleep,val"], ["move",val], ...]
-    #enable, [val, val, val, val, val]
-    #move, [finger, joint, angle],[finger, joint, angle],[finger, joint, angle],[finger, joint, angle],[finger, joint, angle]
-    #move, [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle]
-    #stiffness, [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle]
-    #velocity, [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle], [finger, angle, angle, angle]
-    #sleep, val
-    def routine(self, routine=[["enable",[1,1,0,0,0]],  
-		       ["sleep", 3],
-		       ["move",["Thumb","Outer",40],["Index","Outer",60]], 
-		       ["sleep", 3], 
-		       ["move",["Thumb","Outer",0],["Index","Outer",0]], 
-		       ["sleep", 3]]):
-        pass
 
 

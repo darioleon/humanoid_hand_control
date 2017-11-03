@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
     ##init hand
     ##hand=Hand(3) 3 is the parameter for client yarp port especifically for this server
-    hand = Hand(3)
+    hand = Hand(6)
     hand.set_controller_mode(1)
     
     server_yarp()
